@@ -4,11 +4,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 const app = express();
-const port = 5000;
 const router = require('./routes/');
 const cors = require('cors');
 const beep = require('beepbeep');
-
+const port = process.env.SERVER_PORT || 8000;
 // App stuff
 app.use(express.json());
 app.use(cors());
