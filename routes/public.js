@@ -13,15 +13,15 @@ getUptime = () => {
   const uptime = process.uptime();
   if(uptime > 86400) {
       uptime = uptime/86400;
-      return "Uptime:" + uptime.toFixed(3) + " days";
+      return "" + uptime.toFixed(3) + " days";
     } else if (uptime > 3600) {
       uptime = uptime/3600;
-      return "Uptime:" + uptime.toFixed(2) + " hours";
+      return "" + uptime.toFixed(2) + " hours";
     } else if (uptime > 60) {
       uptime = uptime/60;
-      return "Uptime:" + uptime.toFixed(1) + " minutes";
+      return "" + uptime.toFixed(1) + " minutes";
     } else {
-      return "Uptime:" + uptime.toFixed(0) + " seconds";
+      return "" + uptime.toFixed(0) + " seconds";
     }
 }
 
