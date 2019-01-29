@@ -15,7 +15,6 @@ app.use('/', router)
 app.listen(port, () => console.log(`[!] Listening on port: ${chalk.green(port)}`))
 
 const mongoURL = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`
-console.log(mongoURL);
 // Connect to MongoD
 mongoose.connect(mongoURL, { useNewUrlParser: true });
   mongoose.connection.on('connected', () => {

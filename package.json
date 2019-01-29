@@ -21,6 +21,7 @@
     "jsonwebtoken": "^8.4.0",
     "mongo-seeding": "^3.1.0",
     "mongoose": "^5.4.4",
+    "os-utils": "0.0.14",
     "quagga": "^0.12.1",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0"

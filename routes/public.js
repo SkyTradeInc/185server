@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const os = require('os-utils');
+var os = require('os-utils');
 router.get('/ping', (req,res) => {
   res.status(200).send({
     success: true,
@@ -9,7 +9,7 @@ router.get('/ping', (req,res) => {
   })
 })
 
-getTime = () => {
+getUptime = () => {
   const uptime = process.uptime();
   if(uptime > 86400) {
       uptime = uptime/86400;
@@ -21,7 +21,7 @@ getTime = () => {
       uptime = uptime/60;
       return "Uptime:" + uptime.toFixed(1) + " minutes";
     } else {
-      creturn "Uptime:" + uptime.toFixed(0) + " seconds";
+      return "Uptime:" + uptime.toFixed(0) + " seconds";
     }
 }
 
@@ -29,7 +29,7 @@ router.get('/uptime', (req, res) => {
   res.status(200).send({
     success: true,
     timestamp: Date.now(),
-    message:
+    message: getUptime()
   })
 })
 module.exports = router;
