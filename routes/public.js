@@ -10,7 +10,7 @@ router.get('/ping', (req,res) => {
 })
 
 getUptime = () => {
-  const uptime = process.uptime();
+  let uptime = process.uptime();
   if(uptime > 86400) {
       uptime = uptime/86400;
       return "" + uptime.toFixed(3) + " days";
