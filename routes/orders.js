@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order')
 const Product = require('../models/Product');
-const socket = require('socket.io-client')('http://localhost:5200');
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const socket = require('socket.io-client')('http://localhost:5200');
+
 
 io.on('connection', function (socket) {
 	console.log('[!] User connected');
