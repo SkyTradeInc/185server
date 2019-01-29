@@ -7,7 +7,7 @@ const app = express();
 const router = require('./routes/');
 const cors = require('cors');
 const beep = require('beepbeep');
-const port = process.env.SERVER_PORT || 8000;
+const port = process.env.PORT || 8000;
 // App stuff
 app.use(express.json());
 app.use(cors());
