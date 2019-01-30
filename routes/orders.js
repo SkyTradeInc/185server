@@ -2,23 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order')
 const Product = require('../models/Product');
-// const socket = require('socket.io')
 const io = require('../index');
-
-io.on('connection', () => {
-	console.log("CONNECTED")
-})
-
-io.on('barcode', (data) => {
-	console.log(data);
-})
-
 let currentOrderID = 127;
 
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', function (arg) {
-
 	if (arg.trim() == "status") {
 		console.log(`[!] On order #${currentOrderID}`)
 		return;
@@ -36,7 +25,19 @@ process.stdin.on('data', function (arg) {
 	}
 })
 
+
+io.on('connection', (client) => {
+	console.log('User connected');
+
+	client.on('barcode', (data) => {
+		console.log(data)
+		processScan(currentOrderID, +data)
+	})
+
+})
+
 processScan = (orderID, barcode) => {
+	console.log(orderID, barcode)
 	let promises = []
 	Order.findOne({ orderID })
 		.then(order => {
