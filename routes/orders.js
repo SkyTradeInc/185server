@@ -37,18 +37,23 @@ io.on('connection', (client) => {
 })
 
 processScan = (orderID, barcode) => {
-	console.log(orderID, barcode)
+	let matches = {
+		roundsNeeded: 0,
+		roundsTaken: 0,
+		found: false
+	}
 	let promises = []
 	Order.findOne({ orderID })
 		.then(order => {
 			if (order.status === 'complete') return console.log("   [-] Complete")
 			let filledProducts = 0;
+			matches.orderLength = order.products.length -1;
 			for (let i = 0; i < order.products.length; i++) {
 				if (order.products[i].filled === true) {
 					filledProducts++
 				} else {
 					if (order.products[i].barcode == barcode) {
-						console.log("match")
+						matches.found = true;
 						let promise = Product.findOne({
 								barcode
 							})
@@ -74,6 +79,10 @@ processScan = (orderID, barcode) => {
 						promises.push(promise)
 					} else {}
 				}
+				matches.roundsTaken++;
+			}
+			if(matches.roundsTaken == matches.roundsNeeded && matches.found) {
+				io.emit('error', "Wrong product scanned")
 			}
 			Promise.all(promises)
 				.then(done => {
