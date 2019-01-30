@@ -84,6 +84,7 @@ processScan = (orderID, barcode) => {
 			if(matches.roundsTaken == matches.roundsNeeded && !matches.found) {
 				io.emit('error', "Wrong product scanned")
 			}
+			console.log(matches);
 			Promise.all(promises)
 				.then(done => {
           if (filledProducts === order.products.length) {
