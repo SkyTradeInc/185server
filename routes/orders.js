@@ -2,27 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order')
 const Product = require('../models/Product');
-const app = require('express')();
-const socket = require('socket.io-client')('http://localhost:5200');
+const server = express().listen(9000);
+const io = require("socket.io")(server)
 
-const server = require('http').createServer();
-const io = require('socket.io')(server);
-
-io.on('connection', client => {
-
-	console.log("CLIENT CONNECTED");
-
-	client.on('barcode', data => {
-		processScan(currentOrderID, data);
-		io.emit('triggerUpdate', {})
-	});
-  client.on('disconnect', () => {
-
-	});
-});
-server.listen(3000, () => {
-	console.log('connected on ports 3000')
+io.on('connection', (client) => {
+	console.log('client connected')
 })
+
 
 let currentOrderID = 22;
 let connected = false;
