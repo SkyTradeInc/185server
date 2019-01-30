@@ -9,15 +9,17 @@ io.on('connection', () => {
 	console.log("CONNECTED")
 })
 
-let currentOrderID = 22;
-let connected = false;
+io.on('barcode', (data) => {
+	console.log(data);
+})
+
+let currentOrderID = 127;
 
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', function (arg) {
 
 	if (arg.trim() == "status") {
-		console.log(`[!] Connected: ${connected}`)
 		console.log(`[!] On order #${currentOrderID}`)
 		return;
 	}
