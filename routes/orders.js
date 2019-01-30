@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order')
 const Product = require('../models/Product');
-const server = express().listen(process.env.PORT);
+const server = express().listen(process.env.PORT || 3000);
 const io = require("socket.io")(server)
 
 io.on('connection', (client) => {
