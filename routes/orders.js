@@ -2,13 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order')
 const Product = require('../models/Product');
-const server = express().listen(process.env.PORT || 3000);
-const io = require("socket.io")(server)
+// const socket = require('socket.io')
+const io = require('../index');
 
-io.on('connection', (client) => {
-	console.log('client connected')
+io.on('connection', () => {
+	console.log("CONNECTED")
 })
-
 
 let currentOrderID = 22;
 let connected = false;

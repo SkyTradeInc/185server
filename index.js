@@ -4,15 +4,20 @@ const express = require('express');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 const app = express();
-const router = require('./routes/');
 const cors = require('cors');
 const beep = require('beepbeep');
 const port = process.env.PORT || 8000;
-// App stuff
-app.use(express.json());
-app.use(cors());
-app.use('/', router)
-app.listen(port, () => console.log(`[!] Listening on port: ${chalk.green(port)}`))
+const socket = require('socket.io');
+const server = app.listen(port, () => {
+  const io = module.exports = socket(server);
+  console.log(`[!] Listening on port: ${chalk.green(port)}`)
+  const router = require('./routes/');
+  app.use(express.json());
+  app.use(cors());
+  app.use('/', router)
+})
+
+
 
 const mongoURL = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`
 // Connect to MongoD
