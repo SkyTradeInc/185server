@@ -47,7 +47,7 @@ processScan = (orderID, barcode) => {
 		.then(order => {
 			if (order.status === 'complete') return console.log("   [-] Complete")
 			let filledProducts = 0;
-			matches.orderLength = order.products.length -1;
+			matches.roundsNeeded = order.products.length -1;
 			for (let i = 0; i < order.products.length; i++) {
 				if (order.products[i].filled === true) {
 					filledProducts++
