@@ -82,6 +82,7 @@ processScan = (orderID, barcode) => {
             order.completedAt = Date.now();
           }
 					order.save()
+					io.emit('triggerUpdate', '')
 				})
 		})
 		.catch(err => {
