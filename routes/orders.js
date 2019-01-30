@@ -3,34 +3,26 @@ const router = express.Router();
 const Order = require('../models/Order')
 const Product = require('../models/Product');
 const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
 const socket = require('socket.io-client')('http://localhost:5200');
 
+const server = require('http').createServer();
+const io = require('socket.io')(server);
 
-io.on('connection', function (socket) {
-	console.log('[!] User connected');
+io.on('connection', client => {
+
+	console.log("CLIENT CONNECTED");
+
+	client.on('barcode', data => {
+		processScan(currentOrderID, data);
+		io.emit('triggerUpdate', {})
+	});
+  client.on('disconnect', () => {
+
+	});
 });
-
-http.listen(3000, function () {
-	console.log('[!] listening on 3000');
-});
-
-socket.on('connect', function () {
-	connected = true;
-	console.log("[!] Connected to BarcodePI")
-});
-socket.on('disconnect', function () {
-	connected = false;
-	console.log("[!] Disconnected to BarcodePI")
-
-});
-
-socket.on('barcode', function (data) {
-	processScan(currentOrderID, data);
-	io.emit('triggerUpdate', {})
-
-});
+server.listen(3000, () => {
+	console.log('connected on ports 3000')
+})
 
 let currentOrderID = 22;
 let connected = false;
@@ -59,9 +51,7 @@ process.stdin.on('data', function (arg) {
 
 processScan = (orderID, barcode) => {
 	let promises = []
-	Order.findOne({
-			orderID
-		})
+	Order.findOne({ orderID })
 		.then(order => {
 			if (order.status === 'complete') return console.log("   [-] Complete")
 			let filledProducts = 0;
@@ -168,11 +158,7 @@ router.get('/currentOrder', (req, res) => {
 //Create
 
 router.post('/', (req, res) => {
-	const {
-		orderID,
-		productsList
-	} = req.body
-	console.log(productsList)
+	const { orderID, productsList } = req.body
 	const order = {
 		orderID,
 		status: "new",
@@ -181,9 +167,7 @@ router.post('/', (req, res) => {
 		productFulfilled: false,
 		products: productsList
 	}
-	Order.findOne({
-			orderID
-		})
+	Order.findOne({ orderID })
 		.then(doc => {
 			if (doc) {
 				returnError(res, "Order ID already exists!")
@@ -209,7 +193,12 @@ router.put('/order/:orderID', (req, res) => {
 		.then(doc => {
 			doc.status = "partial"
 			doc.save();
-			return res.send(doc);
+			return res.status(200).send({
+				success: true,
+				timestamp: Date.now(),
+				message: "Data recieved",
+				data: doc
+			})
 		})
 		.catch(err => {
 			returnError(res, `Error: ${err}`)
@@ -219,18 +208,14 @@ router.put('/order/:orderID', (req, res) => {
 
 //Read
 router.get('/:id', (req, res) => {
-	const {
-		id
-	} = req.params;
+	const { id } = req.params;
 	const orderID = id;
-	Order.findOne({
-			orderID
-		})
+	Order.findOne({ orderID })
 		.then(doc => {
 			if (!doc) {
 				returnError(res, `Order #${orderID} not found!`)
 			} else {
-				res.status(200).send({
+				return res.status(200).send({
 					success: true,
 					timestamp: Date.now(),
 					message: "Data recieved",
@@ -245,10 +230,7 @@ router.get('/:id', (req, res) => {
 
 router.get('/status/:status', (req, res) => {
 	const { status } = req.params;
-	console.log(status)
-	Order.find({
-			status
-		})
+	Order.find({ status })
 		.then(doc => {
       res.status(200).send({
         success: true,
@@ -266,7 +248,11 @@ router.get('/status/:status', (req, res) => {
 router.delete('/all', (req, res) => {
   Order.deleteMany({})
     .then(doc => {
-      res.send(doc);
+			res.send({
+				success: true,
+				timestamp: Date.now(),
+				message: doc,
+			});
     })
     .catch(err => {
       returnError(res, `Error: ${err}`)
@@ -275,9 +261,7 @@ router.delete('/all', (req, res) => {
 
 router.delete('/', (req, res) => {
 	const { orderID } = req.body
-	Order.findOne({
-			orderID
-		})
+	Order.findOne({ orderID })
 		.then(doc => {
 			if (!doc) {
 				returnError(res, `Order #${orderID} not found!`)
