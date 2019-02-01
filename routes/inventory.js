@@ -151,22 +151,26 @@ router.put('/product', (req, res) => {
 //Delete
 router.delete('/product', (req, res) => {
   const { barcode } = req.body;
-  Product.deleteOne({ barcode })
-    .then(doc => {
-      if(!doc) {
-        return returnError(res, `Product with barcode ${barcode} not found`)
-      } else {
-        res.status(200).send({
-          success: true,
-          timestamp: Date.now(),
-          message: `Product with barcode ${barcode} deleted`,
-          data: doc
-        })
-      }
-    })
-    .catch(err => {
-      return returnError(res, `Error: ${err}`)
-    })
+  if(barcode) {
+    Product.deleteOne({ barcode })
+      .then(doc => {
+        if(!doc) {
+          return returnError(res, `Product with barcode ${barcode} not found`)
+        } else {
+          res.status(200).send({
+            success: true,
+            timestamp: Date.now(),
+            message: `Product with barcode ${barcode} deleted`,
+            data: doc
+          })
+        }
+      })
+      .catch(err => {
+        return returnError(res, `Error: ${err}`)
+      })
+    } else {
+      return returnError(res, 'Barcode was not provided')
+    }
   })
 
 
