@@ -119,7 +119,7 @@ returnSuccess = (res, message) => {
 
 router.put('/status', (req, res) => {
 	const {orderID, status} = req.body
-	if(rderID && status && typeof orderID == 'number') {
+	if(orderID && status && typeof orderID == 'number') {
 		Order.find({orderID})
 			.then(doc => {
 				doc.status = status
