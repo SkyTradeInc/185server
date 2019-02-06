@@ -138,10 +138,12 @@ router.put('/status', (req, res) => {
 					doc.save()
 					return returnSuccess(res, `Order #${orderID} status changed to Cancelled`)
 				} else {
+					doc.save()
 					return returnSuccess(res, `Order #${orderID} status changed to ${status}`)
 				}
 			})
 			.catch(err => {
+				console.log(err)
 				return returnError(res, err)
 			})
 	}
