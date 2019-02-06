@@ -116,6 +116,22 @@ returnSuccess = (res, message) => {
     message:message
   })
 }
+
+router.put('/status', (req, res) => {
+	const {orderID, status} = req.body
+	if(rderID && status && typeof orderID == 'number') {
+		Order.find({orderID})
+			.then(doc => {
+				doc.status = status
+				doc.save()
+				returnSuccess(res, `Order ID ${orderID} status changed to ${status}`)
+			})
+			.catch(err => {
+				returnError(res, 'OrderID not found')
+			})
+	}
+})
+
 // List of orders
 router.get('/', (req, res) => {
   Order.find({})
@@ -153,7 +169,7 @@ router.post('/currentOrder', (req, res) => {
 })
 
 router.get('/currentOrder', (req, res) => {
-
+	returnSuccess(res, `Listening on Order ID: ${currentOrderID}`)
 })
 
 //Create

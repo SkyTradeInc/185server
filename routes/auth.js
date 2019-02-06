@@ -81,7 +81,7 @@ router.post('/register', (req,res) => {
         return returnError(res, `Error: ${err}`)
       })
     } else {
-      returnError(res, "You must provide a username and password")
+      returnError(res, "You must provide a username, password and role")
     }
 })
 
