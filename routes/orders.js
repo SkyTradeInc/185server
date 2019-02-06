@@ -123,8 +123,23 @@ router.put('/status', (req, res) => {
 		Order.findOne({ orderID })
 			.then(doc => {
 				doc.status = status
-				doc.save()
-				return returnSuccess(res, `Order ID ${orderID} status changed to ${status}`)
+				if(status == 'new') {
+					doc.save()
+					return returnSuccess(res, `Order #${orderID} status changed to New`)
+				} else if (status == 'partial') {
+					doc.save()
+					return returnSuccess(res, `Order #${orderID} status changed to Partial`)
+				} else if (status == 'complete') {
+					doc.completedAt = date.now()
+					doc.save()
+					return returnSuccess(res, `Order #${orderID} status changed to Completed`)
+				} else if (status == "cancel") {
+					doc.completedAt = date.now()
+					doc.save()
+					return returnSuccess(res, `Order #${orderID} status changed to Cancelled`)
+				} else {
+					return returnSuccess(res, `Order #${orderID} status changed to ${status}`)
+				}
 			})
 			.catch(err => {
 				return returnError(res, err)
