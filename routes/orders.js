@@ -124,10 +124,10 @@ router.put('/status', (req, res) => {
 			.then(doc => {
 				doc.status = status
 				doc.save()
-				returnSuccess(res, `Order ID ${orderID} status changed to ${status}`)
+				return returnSuccess(res, `Order ID ${orderID} status changed to ${status}`)
 			})
 			.catch(err => {
-				returnError(res, 'OrderID not found')
+				return returnError(res, err)
 			})
 	}
 })
