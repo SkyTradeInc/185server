@@ -6,7 +6,8 @@
 
 ## Link to GitHub repository
 (Ensure the repo is accessible by your Educators)
-
+https://github.com/SkyTradeInc/185server
+https://github.com/SkyTradeInc/185client
 <br>
 
 # 185 WAREHOUSING: inventory management web application 
@@ -29,11 +30,15 @@ The issues this application aims to solve are:
 ## Functionality / features
 * User and authentication for multiple user roles.
 * Barcode scanning capabilities
-* Stock levels, colour coded by high, medium and low
+* Stock levels are colour coded for high, medium and low
 * Auto generated invoices
 
 ## Screenshots
-
+![JSON object structure](./src/assets/app-screenshot1.png)
+![JSON object structure](./src/assets/app-screenshot2.png)
+![JSON object structure](./src/assets/app-screenshot3.png)
+![JSON object structure](./src/assets/app-screenshot4.png)
+![JSON object structure](./src/assets/app-screenshot5.png)
 
 ## Tech stack (e.g. html, css, deployment platform, etc)
 - Mongo / Mongoose
@@ -42,15 +47,19 @@ The issues this application aims to solve are:
 - Node.js
 - HTML
 - CSS
+- mLab
+- Heroku
+- Netlify
+- 
 
 # Instructions on how to setup, configure, deploy and use app.
-
+- 
 
 
 # Design documentation
 ## Design process
-* The interface design was based on the
-
+* We chose a functional site over a beautiful design.
+* We looked at other inventory management systems to guide our user and data flow.
 
 ## User stories
 INVENTORY
@@ -68,22 +77,14 @@ INBOUND STOCK
 * I want to be able to scan each item which has come in to the warehouse which will automatically added to the system stock levels. I want to be able to select the quantity amount rather then scan each item if a large amount of stock has come in.
 * I want to be able to scan a brand new item and be presented with a form to fill out with all the information needed to add this item to the database. All subsequent scans can increase the quantity level of this item.
 
-## A workflow diagram of the user journey/s.
-
-
-## Wireframes
-
+## Wireframes, workflow, data flow diagram
+![Wireframe, workflow, dataflow](./src/assets/dataflow.png)
 
 ## Database Entity Relationship Diagrams
-
-
-## Data Flow Diagram
-
-
+![JSON object structure](./src/assets/)
 
 # Design documentation: details of project management & planning process:
 ## Project plan & timeline
-
 Week 1 of 4:
 * Get brief from client
 * Build basic wireframes
@@ -108,9 +109,10 @@ Week 4 of 4:
 
 
 ## Client communications
+![Email communication](./src/assets/Sam communication.png)
 
-
-## Screenshots of Trello board(s)
+## Screenshot of Trello board(s)
+![Trello](./src/assets/trello.png)
 
 # Short Answer questions (Section 2.2)
 ## a) What are the most important aspects of quality software?
@@ -125,15 +127,15 @@ The five aspects identified by the CISQ are:
 
 
 ## b) What libraries are being used in the app and why?
-- Socket io: works for realtime web applications that require live data streaming between the client and the server.
- 
+- Socket.io: works for realtime web applications that require live data streaming between the client and the server.
 - Express JS: used for server management by listening for any input/connection requests from the browser. 
 - Mongoose: this is a Object Data Modeling libriray for mongo db management.
 It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
 - Axios makes HTTP requests to be used in the front and back end applications.
 - CORS (cross origin resource sharing) allows cross communication between the browser and API.
 - JSON web tokens allow claims, such as user data, to be represented in a secure manner.
-- Regex: 
+- Regex stands for regular expression and is a special text string for describing a search pattern. A regex search actually scours each page in the search domain character-by-character  In our project, regex has been used in our product search and matches the characters to the products in the database. 
+- material-UI is a design language developed by Google and is somewhat similar to Bootstrap. we have used it to assist with responsiveness and layout.
 
 ## c) A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
 - A thorough understanding of the business and the pain points that need to be solved.
@@ -150,3 +152,13 @@ It manages relationships between data, provides schema validation, and is used t
 
 
 ## e) Evaluate how effective your knowledge and skills were for this project, using examples, and suggest changes or improvements for future projects of a similar nature?
+
+
+
+
+
+
+Team notes:
+Ross: reckon that'll just be the process for setting up the mlab database, heroku and netlify.
+Can say for Mlab we established two collections, one for orders, one for inventory, and now established it runs permanently thanks to being pinged from our server every 5 minutes
+Will be a bit about sockets keeping the connection to the API permanently so no need to set up.
