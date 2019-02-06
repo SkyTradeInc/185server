@@ -130,11 +130,11 @@ router.put('/status', (req, res) => {
 					doc.save()
 					return returnSuccess(res, `Order #${orderID} status changed to Partial`)
 				} else if (status == 'complete') {
-					doc.completedAt = date.now()
+					doc.completedAt = Date.now()
 					doc.save()
 					return returnSuccess(res, `Order #${orderID} status changed to Completed`)
 				} else if (status == "cancel") {
-					doc.completedAt = date.now()
+					doc.completedAt = Date.now()
 					doc.save()
 					return returnSuccess(res, `Order #${orderID} status changed to Cancelled`)
 				} else {
