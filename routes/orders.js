@@ -123,6 +123,8 @@ router.get('/', (req, res) => {
       if(!doc) {
         return returnError(res, 'No orders found')
       } else {
+				console.log(doc.products)
+
         res.status(200).send({
           success: true,
           timestamp: Date.now(),

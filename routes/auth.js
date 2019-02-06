@@ -48,15 +48,15 @@ router.post('/status', isAuthenticated, (req,res) => {
 
 
 router.post('/register', (req,res) => {
-  const { username, password } = req.body;
-  if(username && password) {
+  const { username, password, role } = req.body;
+  if(username && password && role) {
     User.findOne({username})
       .then(doc => {
         if(!doc) {
           if(username.length > 3 && username.length < 15) {
             if(password.length >= 3) {
               bcrypt.hash(password, 10, function(err, hash) {
-                User.create({username, password:hash, role:'admin'})
+                User.create({username, password:hash, role})
                   .then(newUser => {
                     const token = createToken(newUser);
                     return res.status(200).send({
