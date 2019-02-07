@@ -11,6 +11,7 @@ https://github.com/SkyTradeInc/185client
 <br>
 
 ##Link to API documentation
+- This API documentation also acted as our testing platform as it shows the outcome.
 https://documenter.getpostman.com/view/5312272/RztisVWx
 
 # 185 WAREHOUSING: inventory management web application 
@@ -59,7 +60,11 @@ The issues this application aims to solve are:
   
 
 # Instructions on how to setup, configure, deploy and use app.
-- 
+* Git clone both 185client and 185server
+* Then in terminal, type npm i
+* To view the code in VS Code, type code . into terminal, or to view current code locally, type npm start.
+* Utilise a service such as netlify to deploy using the instructions that can be found in the netlify docs.
+* Once a URL has been established (feel free to use the one we prepared earlier http://185warehouse.netlify.com/ ) go to the URL and view product.
 
 
 # Design documentation
