@@ -96,7 +96,7 @@ INBOUND STOCK
 * I want to be able to scan a brand new item and be presented with a form to fill out with all the information needed to add this item to the database. All subsequent scans can increase the quantity level of this item.
 
 ## Wireframes, workflow, data flow diagram
-![Wireframe, workflow, dataflow](./src/assets/dataflow.png)
+![Wireframe, workflow, dataflow](./src/assets/Wireframe_dataflow.png)
 
 ## Database Entity Relationship Diagrams
 ![JSON object structure](./src/assets/JSON-object.png)
@@ -133,8 +133,8 @@ Week 4 of 4:
 ![Email communication](./src/assets/Sam-communication.png)
 
 ## Screenshot of Trello board(s)
-![Trello](./src/assets/trello.png)
-![Trello](./src/assets/trello2.png)
+![Trello](./src/assets/Trello.png)
+![Trello](./src/assets/Trello2.png)
 
 # Short Answer questions (Section 2.2)
 ## a) What are the most important aspects of quality software?
