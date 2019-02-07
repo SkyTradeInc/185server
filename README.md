@@ -10,6 +10,9 @@ https://github.com/SkyTradeInc/185server
 https://github.com/SkyTradeInc/185client
 <br>
 
+##Link to testing documentation
+https://docs.google.com/spreadsheets/d/1asE7NA2jZRU8z5RR7gAYKJsP9TccN83xVbpgQ-chCI8/edit?usp=sharing
+
 ##Link to API documentation
 - This API documentation also acted as our testing platform as it shows the outcome.
 https://documenter.getpostman.com/view/5312272/RztisVWx
@@ -165,7 +168,8 @@ It manages relationships between data, provides schema validation, and is used t
 - Knowledge and understanding of the MERN stack.
 - Knowledge and understanging of deployment.
 - An understanding of CHHL, the 185 warehousing business and how orders are processed and packed.
-- Understanding of how to use barcoce scanning npm packages vs. just using a handhold scanner.
+- Understanding of how to use barcode scanning npm packages vs. just using a handhold scanner.
+- Learning how to test the site.
 
 
 ## e) Evaluate how effective your knowledge and skills were for this project, using examples, and suggest changes or improvements for future projects of a similar nature?
