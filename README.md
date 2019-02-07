@@ -13,6 +13,8 @@ https://github.com/SkyTradeInc/185client
 ##Link to testing documentation
 https://docs.google.com/spreadsheets/d/1asE7NA2jZRU8z5RR7gAYKJsP9TccN83xVbpgQ-chCI8/edit?usp=sharing
 
+Client testing took place at the warehouse utilising the handheld barcode scanner and the app running locally on his computer.
+
 ##Link to API documentation
 - This API documentation also acted as our testing platform as it shows the outcome.
 https://documenter.getpostman.com/view/5312272/RztisVWx
