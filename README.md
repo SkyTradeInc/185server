@@ -10,6 +10,9 @@ https://github.com/SkyTradeInc/185server
 https://github.com/SkyTradeInc/185client
 <br>
 
+##Link to API documentation
+https://documenter.getpostman.com/view/5312272/RztisVWx
+
 # 185 WAREHOUSING: inventory management web application 
 ## Problem definition / purpose
 The purpose of this web application is to build a warehouse management system for 185 Warehousing that will enable them to scale back on the paper and pen manual input that is currently involved.
@@ -28,10 +31,10 @@ The issues this application aims to solve are:
 
 
 ## Functionality / features
-* User and authentication for multiple user roles.
-* Barcode scanning capabilities
-* Stock levels are colour coded for high, medium and low
-* Auto generated invoices
+* User and authentication for multiple user roles including user management for those with admin rights.
+* Barcode scanning capabilities.
+* CRUD functionality for product stock levels.
+* 
 
 ## Screenshots
 ![JSON object structure](./src/assets/app-screenshot1.png)
@@ -155,19 +158,16 @@ It manages relationships between data, provides schema validation, and is used t
 
 ## d) Within your own project what knowledge or skills were required to complete your project, and overcome challenges?
 - Knowledge and understanding of the MERN stack.
-- Knowledge of deployment.
+- Knowledge and understanging of deployment.
 - An understanding of CHHL, the 185 warehousing business and how orders are processed and packed.
 - Understanding of how to use barcoce scanning npm packages vs. just using a handhold scanner.
 
 
 ## e) Evaluate how effective your knowledge and skills were for this project, using examples, and suggest changes or improvements for future projects of a similar nature?
+As a team, we all found React to be quite challenging.  
+Applying this.state as well as the lifecycle methods required a lot of additional reading to ensure everything worked effectively.
 
+The majority of the team had no previous exposure to regular expressions or sockets, so there was a big learning curve there which also enabled more strategic ways of thinking.
 
+There were no issues with communication within our team.  We had synergistic collaboration and openly challenged each other to meet more ambitious milestones within ambitious timings.
 
-
-
-
-Team notes:
-Ross: reckon that'll just be the process for setting up the mlab database, heroku and netlify.
-Can say for Mlab we established two collections, one for orders, one for inventory, and now established it runs permanently thanks to being pinged from our server every 5 minutes
-Will be a bit about sockets keeping the connection to the API permanently so no need to set up.
