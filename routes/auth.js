@@ -53,7 +53,7 @@ router.post('/register', (req,res) => {
     User.findOne({username})
       .then(doc => {
         if(!doc) {
-          if(username.length > 3 && username.length < 15) {
+          if(username.length > 2 && username.length < 15) {
             if(password.length >= 3) {
               bcrypt.hash(password, 10, function(err, hash) {
                 User.create({username, password:hash, role})
