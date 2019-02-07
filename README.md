@@ -1,7 +1,7 @@
 # 185 WAREHOUSING: inventory management web application
 
 
- ## URL to published app
+## URL to published app
 
 
 ## Link to GitHub repository
@@ -39,18 +39,21 @@ The issues this application aims to solve are:
 ![JSON object structure](./src/assets/app-screenshot3.png)
 ![JSON object structure](./src/assets/app-screenshot4.png)
 ![JSON object structure](./src/assets/app-screenshot5.png)
+![JSON object structure](./src/assets/app-screenshot6.png)
+![JSON object structure](./src/assets/app-screenshot7.png)
 
 ## Tech stack (e.g. html, css, deployment platform, etc)
 - Mongo / Mongoose
 - Express
 - React.js
 - Node.js
+- Socket.IO
 - HTML
 - CSS
 - mLab
 - Heroku
 - Netlify
-- 
+  
 
 # Instructions on how to setup, configure, deploy and use app.
 - 
@@ -81,7 +84,7 @@ INBOUND STOCK
 ![Wireframe, workflow, dataflow](./src/assets/dataflow.png)
 
 ## Database Entity Relationship Diagrams
-![JSON object structure](./src/assets/)
+![JSON object structure](./src/assets/JSON-object.png)
 
 # Design documentation: details of project management & planning process:
 ## Project plan & timeline
@@ -105,14 +108,18 @@ Week 3 of 4:
 * Deploy front end
 
 Week 4 of 4:
+* Testing
+* Final styling
+* Any additional features beyond MVP
 * Project submission Thurs 7th Feb.
 
 
 ## Client communications
-![Email communication](./src/assets/Sam communication.png)
+![Email communication](./src/assets/Sam-communication.png)
 
 ## Screenshot of Trello board(s)
 ![Trello](./src/assets/trello.png)
+![Trello](./src/assets/trello2.png)
 
 # Short Answer questions (Section 2.2)
 ## a) What are the most important aspects of quality software?
@@ -127,7 +134,7 @@ The five aspects identified by the CISQ are:
 
 
 ## b) What libraries are being used in the app and why?
-- Socket.io: works for realtime web applications that require live data streaming between the client and the server.
+- Socket.IO: works for realtime web applications that require live data streaming between the client and the server.  We have used socket.IO to keep a constant open connection to the API and database in order to allow real time updates from our barcode scanner.
 - Express JS: used for server management by listening for any input/connection requests from the browser. 
 - Mongoose: this is a Object Data Modeling libriray for mongo db management.
 It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
@@ -135,7 +142,8 @@ It manages relationships between data, provides schema validation, and is used t
 - CORS (cross origin resource sharing) allows cross communication between the browser and API.
 - JSON web tokens allow claims, such as user data, to be represented in a secure manner.
 - Regex stands for regular expression and is a special text string for describing a search pattern. A regex search actually scours each page in the search domain character-by-character  In our project, regex has been used in our product search and matches the characters to the products in the database. 
-- material-UI is a design language developed by Google and is somewhat similar to Bootstrap. we have used it to assist with responsiveness and layout.
+- Material-UI is a design language developed by Google and is somewhat similar to Bootstrap. We have used it to assist with responsiveness and layout.
+- Bootstrap is the other design language that we have used for styling.
 
 ## c) A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
 - A thorough understanding of the business and the pain points that need to be solved.
@@ -143,6 +151,7 @@ It manages relationships between data, provides schema validation, and is used t
 - Good communication skills.
 - Knowledge of coding and design.
 - Excellent googling skills.
+- Commit often to github. Push a branch, create a pull request, have it approved by another team mate and if merge conflicts occur, mitigate them as a team.
 
 ## d) Within your own project what knowledge or skills were required to complete your project, and overcome challenges?
 - Knowledge and understanding of the MERN stack.
