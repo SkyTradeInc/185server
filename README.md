@@ -15,7 +15,7 @@ https://docs.google.com/spreadsheets/d/1asE7NA2jZRU8z5RR7gAYKJsP9TccN83xVbpgQ-ch
 
 Client testing took place at the warehouse utilising the handheld barcode scanner and the app running locally on his computer.
 Here is an image of our team on location with the client testing the production version of the 185 warehousing inventory application.
-![On location testing](./src/assets/testing.jpg)
+![On location testing](./src/assets/testing2.jpg)
 
 ##Link to API documentation
 - This API documentation also acted as our testing platform as it shows the outcome.
